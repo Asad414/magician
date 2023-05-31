@@ -48,7 +48,7 @@
 
     /* Style for the image */
     .image-container img {
-      display: block;
+      /* display: block; */
       width: 100%;
       height: auto;
     }
@@ -78,6 +78,30 @@
         font-size: 14px;
       }
     }
+
+    .tarot-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    /* Tarot card image */
+    .tarot-card {
+      width: calc(20% - 15px);
+      /* display: none; */
+    }
+
+    /* Responsive tarot card layout */
+    @media screen and (max-width: 768px) {
+      .tarot-card {
+        width: calc(50% - 15px);
+      }
+    }
   </style>
 </head>
 
@@ -89,14 +113,66 @@
     </div>
   </div>
 
-  <div class="image-container" id="img" style="visibility: hidden;">
-    <img src="/static/back.jpeg" alt="Your image">
+  <div class="image-container" id="img" style="visibility: hidden; width: 100%;">
+    <img src="/static/back.jpeg" alt="Your image" width="80%">
   </div>
 
   <div class="output-box" style="visibility: hidden;" id="output">
     <p id="out"></p>
   </div>
-  
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; background-color: #333; visibility: hidden;"
+    id="images">
+    <div
+      style="width: 80%; display: flex; flex-wrap: wrap; justify-content: center; padding-top: 20%; padding-bottom: 20%;">
+      <div style="text-align: center; width: 50%;">
+        <img src="/static/cards/0.jpg" alt="Horizontal Image 1" width="30%" id="img1">
+        <p style="color: #fff; font-size: 10px;">ABOVE</p>
+      </div>
+      <div style="display: flex; justify-content: center; width: 100%; margin: 6%;">
+        <div style="text-align: center;">
+          <img src="/static/cards/0.jpg" alt="Horizontal Image 1" width="70%" id="img2">
+          <p style="color: #fff; font-size: 10px;">PAST</p>
+        </div>
+        <div style="text-align: center; margin-left: 5%;">
+          <img src="/static/cards/0.jpg" alt="Horizontal Image 2" width="70%" id="img3">
+          <p style="color: #fff; font-size: 10px;">PRESENT</p>
+        </div>
+        <div style="text-align: center; margin-left: 5%;">
+          <img src="/static/cards/0.jpg" alt="Horizontal Image 3" width="70%" id="img4">
+          <p style="color: #fff; font-size: 10px;">CHALLENGE</p>
+        </div>
+        <div style="text-align: center; margin-left: 5%;">
+          <img src="/static/cards/0.jpg" alt="Horizontal Image 3" width="70%" id="img5">
+          <p style="color: #fff; font-size: 10px;">FUTURE</p>
+        </div>
+      </div>
+      <div style="text-align: center; width: 50%;">
+        <img src="/static/cards/0.jpg" alt="" width="30%" id="img6">
+        <p style="color: #fff; font-size: 10px;">BELOW</p>
+      </div>
+    </div>
+    <div style="width: 20%; display: flex; flex-direction: column; justify-content: center;">
+      <div style="text-align: center; margin-bottom: 10%;">
+        <img src="/static/cards/0.jpg" alt="Horizontal Image 1" width="50%" id="img7">
+        <p style="color: #fff; font-size: 10px;">OUTCOMES</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10%;">
+        <img src="/static/cards/0.jpg" alt="Horizontal Image 2" width="50%" id="img8">
+        <p style="color: #fff; font-size: 10px;">HOPES / FEARS</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10%;">
+        <img src="/static/cards/0.jpg" alt="Horizontal Image 3" width="50%" id="img9">
+        <p style="color: #fff; font-size: 10px;">EXTERNAL</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10%;">
+        <img src="/static/cards/0.jpg" alt="Horizontal Image 1" width="50%" id="img10">
+        <p style="color: #fff; font-size: 10px;">ADVICE</p>
+      </div>
+    </div>
+  </div>
+
+
   <script>
     $(document).ready(function () {
 
@@ -119,9 +195,20 @@
             console.log(response.text);
             $("#img").empty();
             document.getElementById("output").style.visibility = "visible";
+            document.getElementById("images").style.visibility = "visible";
             $("#out").append(response.text)
-            
+
             // do something with the response
+            document.getElementById('img1').src = "/static/cards/" + response.ind1 + ".jpg";
+            document.getElementById('img2').src = "/static/cards/" + response.ind2 + ".jpg";
+            document.getElementById('img3').src = "/static/cards/" + response.ind3 + ".jpg";
+            document.getElementById('img4').src = "/static/cards/" + response.ind4 + ".jpg";
+            document.getElementById('img5').src = "/static/cards/" + response.ind5 + ".jpg";
+            document.getElementById('img6').src = "/static/cards/" + response.ind6 + ".jpg";
+            document.getElementById('img7').src = "/static/cards/" + response.ind7 + ".jpg";
+            document.getElementById('img8').src = "/static/cards/" + response.ind8 + ".jpg";
+            document.getElementById('img9').src = "/static/cards/" + response.ind9 + ".jpg";
+            document.getElementById('img10').src = "/static/cards/" + response.ind10 + ".jpg";
           }
         });
       });

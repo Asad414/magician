@@ -63,7 +63,7 @@
 
     /* Style for the output text */
     .output-box p {
-      font-size: 16px;
+      font-size: 20px;
       line-height: 1.5;
       margin: 0;
     }
@@ -75,7 +75,7 @@
       }
 
       .output-box p {
-        font-size: 14px;
+        font-size: 18px;
       }
     }
 
@@ -171,11 +171,16 @@
       </div>
     </div>
   </div>
-
+  
+  <div class="form-group">
+      <button id="reloadButton">< Back</button>
+  </div>
 
   <script>
     $(document).ready(function () {
-
+      $('#reloadButton').click(function() {
+        location.reload();
+      });
       $('#send-btn').on('click', function () {
         console.log("Clicked");
         var msg = $('#msg').val();

@@ -173,7 +173,7 @@
   </div>
   <br><br>
   <div class="form-group">
-      <button id="reloadButton">< Back</button>
+      <button id="reloadButton" style="margin-left: 25%; margin-right: 25%; visibility: hidden;">< Back</button>
   </div>
 
   <script>
@@ -201,6 +201,7 @@
             $("#img").empty();
             document.getElementById("output").style.visibility = "visible";
             document.getElementById("images").style.visibility = "visible";
+            document.getElementById("reloadButton").style.visibility = "visible";
             $("#out").append(response.text)
 
             // do something with the response
